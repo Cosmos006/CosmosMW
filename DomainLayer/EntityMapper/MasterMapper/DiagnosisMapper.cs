@@ -13,22 +13,22 @@ namespace DomainLayer.EntityMapper.MasterMapper
     {
         public void Configure(EntityTypeBuilder<Diagnosis> builder)
         {
-            builder.HasKey(x => x.DiagnosisId).HasName("pk_diagnosisid");
-            builder.Property(x => x.DiagnosisId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_diagnosisid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.DiagnosisCode)
                 .HasColumnName("DiagnosisCode")
-                .HasColumnType("CHARACTER VARYING");
+                .HasColumnType("VARCHAR(50)");
 
             builder.Property(x => x.Description)
                 .HasColumnName("Description")
-                .HasColumnType("VARCHAR(100)");
+                .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.IsDepricated)
             .HasColumnName("IsDepricated")
-            .HasColumnType("BOOLEAN");
+            .HasColumnType("CHAR");
         }
     }
 }

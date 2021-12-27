@@ -13,18 +13,18 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<PatientDemographicDetails> builder)
         {
-            builder.HasKey(x => x.PatientDemographicId).HasName("pk_patientdemographicid");
-            builder.Property(x => x.PatientDemographicId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_patientdemographicid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.FirstName)
                 .HasColumnName("FirstName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(50)");
 
             builder.Property(x => x.LastName)
                 .HasColumnName("LastName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(50)");
 
             builder.Property(x => x.Age)
                 .HasColumnName("Age")
@@ -40,7 +40,7 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.Email)
                .HasColumnName("Email")
-               .HasColumnType("CHARACTER VARYING");
+               .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Gender)
                 .HasColumnName("Gender")
@@ -48,15 +48,15 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.Race)
                 .HasColumnName("Race")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Ethinicity)
                 .HasColumnName("Ethinicity")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Address)
                .HasColumnName("Address")
-               .HasColumnType("CHARACTER VARYING");
+               .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.PreviousAllergies)
                 .HasColumnName("PreviousAllergies")
@@ -64,11 +64,11 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.IsFatal)
                .HasColumnName("IsFatal")
-               .HasColumnType("BOOLEAN");
+               .HasColumnType("CHAR");
 
             builder.Property(x => x.PatientRelativeId)
                 .HasColumnName("PatientRelativeId")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
         }
     }

@@ -13,9 +13,9 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<PatientRelativeDetails> builder)
         {
-            builder.Property(x => x.PatientRelativeDetailsId).ValueGeneratedOnAdd()
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.Title)
              .HasColumnName("Title")
@@ -31,11 +31,11 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.Email)
               .HasColumnName("Email")
-              .HasColumnType("CHARACTER VARYING");
+              .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Address)
               .HasColumnName("Address")
-              .HasColumnType("CHARACTER VARYING");
+              .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Relation)
               .HasColumnName("Relation")

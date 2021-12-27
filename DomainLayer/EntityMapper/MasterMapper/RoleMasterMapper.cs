@@ -11,16 +11,14 @@ namespace DomainLayer.EntityMapper
 {
     public class RoleMasterMapper :  IEntityTypeConfiguration<RoleMaster>
     {
-        
-
         public void Configure(EntityTypeBuilder<RoleMaster> builder)
         {
-            builder.HasKey(x => x.RoleId).HasName("pk_roleid");
-            builder.Property(x => x.RoleId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_roleid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                     .HasColumnName("Id")
-                    .HasColumnType("UUID");
+                    .HasColumnType("UniqueIdentifier");
 
-            builder.Property(x => x.Role)
+            builder.Property(x => x.UserRole)
                   .HasColumnName("Role")
                   .HasColumnType("VARCHAR(50)");
         }

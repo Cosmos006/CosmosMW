@@ -13,30 +13,30 @@ namespace DomainLayer.EntityMapper.MasterMapper
     {
         public void Configure(EntityTypeBuilder<Drug> builder)
         {
-            builder.HasKey(x => x.DrugId).HasName("pk_drugid");
-            builder.Property(x => x.DrugId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_drugid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.DrugName)
                 .HasColumnName("DrugName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.DrugForm)
                .HasColumnName("DrugForm")
-               .HasColumnType("VARCHAR(25)");
+               .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.DrugStrength)
                .HasColumnName("DrugStrength")
-               .HasColumnType("CHARACTER VARYING");
+               .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.DrugGenericName)
                 .HasColumnName("DrugGenericName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.DrugManufacturerName)
                .HasColumnName("DrugManufacturerName")
-               .HasColumnType("VARCHAR(25)");
+               .HasColumnType("VARCHAR(150)");
 
         }
     }

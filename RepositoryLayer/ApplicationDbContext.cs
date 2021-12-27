@@ -1,94 +1,119 @@
-﻿using DomainLayer.EntityMapper;
-using DomainLayer.EntityMapper.MasterMapper;
-using DomainLayer.Models;
-using DomainLayer.Models.Master;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainLayer;
+using DomainLayer.EntityMapper;
+using DomainLayer.EntityMapper.MasterMapper;
+using DomainLayer.Models;
+using DomainLayer.Models.Master;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
 
 namespace RepositoryLayer
 {
-    public class ApplicationDbContext: DbContext
+    public class ApplicationDbContext: IdentityDbContext
     {
+        public ApplicationDbContext()
+        {
 
+        }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
 
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<Allergy> Allergy { get; set; }
+        public DbSet<Diagnosis> Diagnosis { get; set; }
+        public DbSet<Drug> Drug { get; set; }
+        public DbSet<Procedure> Procedure { get; set; }
+        public DbSet<RoleMaster> RoleMaster { get; set; }
+        public DbSet<Appointments> Appointments { get; set; }
+        public DbSet<EmployeeDetails> EmployeeDetails { get; set; }
+        public DbSet<Notes> Notes { get; set; }
+        public DbSet<PatientDetails> PatientDetails { get; set; }
+        public DbSet<PatientDemographicDetails> PatientDemographicDetails { get; set; }
+        public DbSet<PatientRelativeDetails> PatientRelativeDetails { get; set; }
+        public DbSet<PatientVisitDetails> PatientVisitDetails { get; set; }
+        public DbSet<UserDetails> UserDetails { get; set; }
+   
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //var converter = new BoolToStringConverter(mode);
-            //modelBuilder.Ignore("IsFirstLogIn");
-            //modelBuilder.Entity<UserDetails>().Property(x => x.IsFirstLogIn).HasConversion<string>();
+            modelBuilder
+            .Entity<UserDetails>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new UserDetailsMapper());
 
             modelBuilder
-            .Entity<UserDetails>().Property(x => x.UserDetailsId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new UserDetailsMapper());
+           .Entity<RoleMaster>().Property(x => x.Id)
+           .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new RoleMasterMapper());
 
             modelBuilder
-           .Entity<RoleMaster>().Property(x => x.RoleId)
-           .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new RoleMasterMapper());
+            .Entity<EmployeeDetails>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new EmployeeDetailsMapper());
 
             modelBuilder
-            .Entity<EmployeeDetails>().Property(x => x.EmployeeId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new EmployeeDetailsMapper());
+            .Entity<Notes>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new NotesMapper());
 
             modelBuilder
-            .Entity<Notes>().Property(x => x.NotesId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new NotesMapper());
+           .Entity<Appointments>().Property(x => x.Id)
+           .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new AppointmentsMapper());
 
             modelBuilder
-           .Entity<Appointments>().Property(x => x.AppointmentId)
-           .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new AppointmentsMapper());
+           .Entity<PatientDemographicDetails>().Property(x => x.Id)
+           .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new PatientDemographicDetailsMapper());
 
             modelBuilder
-           .Entity<PatientDemographicDetails>().Property(x => x.PatientDemographicId)
-           .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new PatientDemographicDetailsMapper());
+           .Entity<PatientDetails>().Property(x => x.Id)
+           .HasDefaultValueSql("newid()");
+           // modelBuilder.ApplyConfiguration(new PatientDetailsMapper());
 
             modelBuilder
-           .Entity<PatientDetails>().Property(x => x.PatientDetailsId)
-           .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new PatientDetailsMapper());
+            .Entity<PatientRelativeDetails>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new PatientRelativeDetailsMapper());
 
             modelBuilder
-            .Entity<PatientRelativeDetails>().Property(x => x.PatientRelativeDetailsId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new PatientRelativeDetailsMapper());
+            .Entity<Drug>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new DrugMapper());
 
             modelBuilder
-            .Entity<Drug>().Property(x => x.DrugId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new DrugMapper());
+            .Entity<Allergy>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new AllergyMapper());
 
             modelBuilder
-            .Entity<Allergy>().Property(x => x.AllergyId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new AllergyMapper());
+            .Entity<Diagnosis>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new DiagnosisMapper());
 
             modelBuilder
-            .Entity<Diagnosis>().Property(x => x.DiagnosisId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new DiagnosisMapper());
-
-            modelBuilder
-            .Entity<Procedure>().Property(x => x.ProcedureId)
-            .HasDefaultValueSql("gen_random_uuid()");
-            modelBuilder.ApplyConfiguration(new ProcedureMapper());
-
+            .Entity<Procedure>().Property(x => x.Id)
+            .HasDefaultValueSql("newid()");
+            //modelBuilder.ApplyConfiguration(new ProcedureMapper());
 
             base.OnModelCreating(modelBuilder);
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder
+            //.UseNpgsql(
+            //"Host=localhost; Port=5432; Database=CosmosDB; User Id=postgres; password=root");
+            optionsBuilder
+                .UseSqlServer(
+                "Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=CosmosDB");
+        }
     }
 }

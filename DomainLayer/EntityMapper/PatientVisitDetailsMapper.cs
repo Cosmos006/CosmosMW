@@ -13,18 +13,18 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<PatientVisitDetails> builder)
         {
-            builder.HasKey(x => x.PatientVisitDetailsId).HasName("pk_patientvisitdetailsid");
-            builder.Property(x => x.PatientVisitDetailsId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_patientvisitdetailsid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.Height)
                 .HasColumnName("Height")
-                .HasColumnType("NUMERIC");
+                .HasColumnType("DECIMAL");
 
             builder.Property(x => x.Weight)
                 .HasColumnName("Weight")
-                .HasColumnType("NUMERIC");
+                .HasColumnType("DECIMAL");
 
             builder.Property(x => x.BloodPressure)
               .HasColumnName("BloodPressure")
@@ -40,31 +40,31 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.DoctorDescription)
             .HasColumnName("DoctorDescription")
-            .HasColumnType("VARCHAR(100)");
+            .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.ProcedureDesciption)
             .HasColumnName("ProcedureDesciption")
-            .HasColumnType("VARCHAR(100)");
+            .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.Medication)
             .HasColumnName("Medication")
-            .HasColumnType("VARCHAR(100)");
+            .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.Dosage)
             .HasColumnName("Dosage")
-            .HasColumnType("VARCHAR(50)");
+            .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.AppointmentId)
            .HasColumnName("AppointmentId")
-           .HasColumnType("UUID");
+           .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.DiagnosisId)
            .HasColumnName("DiagnosisId")
-           .HasColumnType("UUID");
+           .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.ProcedureId)
            .HasColumnName("ProcedureId")
-           .HasColumnType("UUID");
+           .HasColumnType("UniqueIdentifier");
 
         }
     }

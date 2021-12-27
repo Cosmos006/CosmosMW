@@ -13,22 +13,22 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<PatientDetails> builder)
         {
-            builder.HasKey(x => x.PatientDetailsId).HasName("pk_patientdetailsid");
-            builder.Property(x => x.PatientDetailsId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_patientdetailsid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.Title)
                 .HasColumnName("Title")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(15)");
 
             builder.Property(x => x.FirstName)
                 .HasColumnName("FirstName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(50)");
 
             builder.Property(x => x.LastName)
                 .HasColumnName("LastName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(50)");
 
             builder.Property(x => x.Contact)
                 .HasColumnName("Contact")
@@ -36,15 +36,15 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.PatientDemographicId)
                    .HasColumnName("PatientDemographicId")
-                   .HasColumnType("UUID");
+                   .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.UserId)
                .HasColumnName("UserId")
-               .HasColumnType("UUID");
+               .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.IsActive)
               .HasColumnName("IsActive")
-              .HasColumnType("BOOLEAN");
+              .HasColumnType("CHAR");
         }
     }
 }
