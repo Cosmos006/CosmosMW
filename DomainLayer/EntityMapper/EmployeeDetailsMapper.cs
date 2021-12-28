@@ -13,10 +13,10 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<EmployeeDetails> builder)
         {
-            builder.HasKey(x => x.EmployeeId).HasName("pk_employeeid");
-            builder.Property(x => x.EmployeeId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_employeeid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.Title)
              .HasColumnName("Title")
@@ -40,27 +40,27 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.Specialization)
               .HasColumnName("Specialization")
-              .HasColumnType("VARCHAR(50)");
+              .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.Email)
              .HasColumnName("Email")
-             .HasColumnType("CHARACTER VARYING");
+             .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.CreatedOn)
              .HasColumnName("CreatedOn")
-             .HasColumnType("TIMESTAMP");
+             .HasColumnType("DATEIME");
 
-            builder.Property(x => x.RoleId)
-            .HasColumnName("RoleId")
-            .HasColumnType("UUID");
+            //builder.Property(x => x.RoleId)
+            //.HasColumnName("RoleId")
+            //.HasColumnType("UUID");
 
             builder.Property(x => x.UserId)
             .HasColumnName("UserId")
-            .HasColumnType("UUID");
+            .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.IsActive)
            .HasColumnName("IsActive")
-           .HasColumnType("BOOLEAN");
+           .HasColumnType("CHAR");
 
 
         }

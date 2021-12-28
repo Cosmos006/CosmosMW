@@ -13,10 +13,10 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<Notes> builder)
         {
-            builder.HasKey(x => x.NotesId).HasName("pk_notesid");
-            builder.Property(x => x.NotesId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_notesid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.SenderMessage)
                 .HasColumnName("SenderMessage")
@@ -28,19 +28,19 @@ namespace DomainLayer.EntityMapper
 
             builder.Property(x => x.SenderId)
                 .HasColumnName("SenderId")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.RecieverId)
                 .HasColumnName("RecieverId")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
    
             builder.Property(x => x.SentDateTime)
                 .HasColumnName("SentDateTime")
-                .HasColumnType("TIMESTAMP");
+                .HasColumnType("DATEIME");
 
             builder.Property(x => x.RecievedDateTime)
                 .HasColumnName("RecievedDateTime")
-                .HasColumnType("TIMESTAMP");
+                .HasColumnType("DATEIME");
         }
     }
 }

@@ -13,36 +13,36 @@ namespace DomainLayer.EntityMapper
     {
         public void Configure(EntityTypeBuilder<UserDetails> builder)
         {
-            builder.HasKey(x => x.UserDetailsId).HasName("pk_userid");
-            builder.Property(x => x.UserDetailsId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_userid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.UserName)
               .HasColumnName("UserName")
-              .HasColumnType("CHARACTER VARYING");
+              .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Password)
               .HasColumnName("Password")
-              .HasColumnType("CHARACTER VARYING");
+              .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.Status)
               .HasColumnName("Status")
-              .HasColumnType("BOOLEAN");
+              .HasColumnType("CHAR");
 
             builder.Property(x => x.IsFirstLogIn)
             .HasColumnName("IsFirstLogIn")
-            .HasColumnType("BOOLEAN");
+            .HasColumnType("CHAR");
 
 
             builder.Property(x => x.NoOfAttempts)
             .HasColumnName("NoOfAttempts")
-            .HasColumnType("INT");//10:01
+            .HasColumnType("INT");
 
             //builder.HasKey(x => x.RoleRefId).HasName("fk_roleid");
             builder.Property(x => x.RoleId)
              .HasColumnName("RoleId")
-             .HasColumnType("UUID");
+             .HasColumnType("UniqueIdentifier");
         }
     }
 }

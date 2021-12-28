@@ -13,26 +13,26 @@ namespace DomainLayer.EntityMapper.MasterMapper
     {
         public void Configure(EntityTypeBuilder<Allergy> builder)
         {
-            builder.HasKey(x => x.AllergyId).HasName("pk_allergyid");
-            builder.Property(x => x.AllergyId).ValueGeneratedOnAdd()
+            builder.HasKey(x => x.Id).HasName("pk_allergyid");
+            builder.Property(x => x.Id).ValueGeneratedOnAdd()
                 .HasColumnName("Id")
-                .HasColumnType("UUID");
+                .HasColumnType("UniqueIdentifier");
 
             builder.Property(x => x.AllergyCode)
                 .HasColumnName("AllergyCode")
-                .HasColumnType("CHARACTER VARYING");
+                .HasColumnType("VARCHAR(50)");
 
             builder.Property(x => x.AllergyType)
                 .HasColumnName("AllergyType")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(100)");
 
             builder.Property(x => x.AllergyName)
                 .HasColumnName("AllergyName")
-                .HasColumnType("VARCHAR(25)");
+                .HasColumnType("VARCHAR(150)");
 
             builder.Property(x => x.ClinicalInformation)
                 .HasColumnName("ClinicalInformation")
-                .HasColumnType("VARCHAR(50)");
+                .HasColumnType("VARCHAR(150)");
         }
     }
 }
